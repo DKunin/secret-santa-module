@@ -1,0 +1,16 @@
+{
+  "name": "secret-santa-cli",
+  "version": "1.0.0",
+  "description": "Secret santa shuffler and email sender",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DKunin",
+  "license": "MIT",
+  "dependencies": {
+    "babel": "^6.3.13",
+    "ramda": "^0.18.0",
+    "secret-santa-shuffler": "git@github.com:DKunin/secret-santa-shuffler.git"
+  }
+}
