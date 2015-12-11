@@ -17,6 +17,7 @@ const SERVERADRESS = `http://${currentIpAdress()}:${PORT}`;
 
 let link = jade.compileFile('templates/link.jade', {});
 const prepeareArray = R.map(item=>{return { giver:item[0], to:item[1] };});
+
 const buildFilename = function(obj) {
   return `temp/${md5Hex(obj, 12)}.html`;
 };
@@ -31,10 +32,18 @@ let fspromise = function(obj){
   });
 };
 
+let fspromiseString = function(obj){
+  return new Promise(function(resolve,reject) {
+    let filename = buildFilename(obj.string);
+    let data     = obj.string;
+    resolve(data);
+  });
+};
+
 function templater(array, templatename='main'){
   let fn = jade.compileFile(`templates/${templatename}.jade`, {});
-  let processJadeWithOriginal = function(ob){ return {giver: ob.giver, string: fn(ob)};};
-  let newArray = R.compose(R.map(fspromise), R.map(processJadeWithOriginal), prepeareArray)(array);
+  let processJadeWithOriginal = function(ob){ console.log(ob);return {giver: ob.giver, string: fn(ob)};};
+  let newArray = R.compose(R.map(processJadeWithOriginal), prepeareArray)(array);
   return new Promise(function(resolve, reject){
     Promise.all(newArray).then(resolve).catch(reject);
   });

@@ -10,7 +10,13 @@
   "license": "MIT",
   "dependencies": {
     "babel": "^6.3.13",
+    "jade": "^1.11.0",
+    "md5hex": "^1.0.0",
+    "my-ip": "^1.1.1",
+    "nconf": "^0.8.2",
+    "nodemailer": "^1.10.0",
     "ramda": "^0.18.0",
-    "secret-santa-shuffler": "git@github.com:DKunin/secret-santa-shuffler.git"
+    "secret-santa-shuffler": "git@github.com:DKunin/secret-santa-shuffler.git",
+    "winston": "^2.1.1"
   }
 }
