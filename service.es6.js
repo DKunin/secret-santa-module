@@ -18,10 +18,15 @@ const prepeareForTemplater = originalList => {
   }));
 }
 
-var list = fs.readFileSync(path.resolve('./lists/list1.csv')).toString();
-var mailingObject = convertCsvToObj(list);
-var mailList = getMails(mailingObject);
-var prepearedtForTemplater = prepeareForTemplater(mailingObject)(randomizeArray(mailList));
-
-templater(prepearedtForTemplater, 'main').then(console.log).catch(console.log);
+module.exports = function(fileName, options){
+  
+  var list = fs.readFileSync(path.resolve(fileName)).toString();
+  
+  var mailingObject = convertCsvToObj(list);
+  var mailList = getMails(mailingObject);
+  var prepearedtForTemplater = prepeareForTemplater(mailingObject)(randomizeArray(mailList));
+  var compiledMail = mail(options);
+  
+  return templater(prepearedtForTemplater).then(compiledMail).catch(logger.error);
+}
 
