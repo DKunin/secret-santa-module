@@ -1,24 +1,21 @@
 {
   "name": "secret-santa-module",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Secret santa shuffler and email sender",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "build": "node ./node_modules/babel-cli/bin/babel.js ./service.js, ./modules/*.js  --out-file script-compiled.js"
   },
   "author": "DKunin",
   "license": "MIT",
   "dependencies": {
-    "babel": "^6.3.13",
-    "babel-core": "^6.3.17",
-    "babel-polyfill": "^6.3.14",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-register": "^6.3.13",
     "jade": "^1.11.0",
     "nodemailer": "^1.10.0",
     "nodemailer-mailgun-transport": "^1.0.1",
     "ramda": "^0.18.0",
     "secret-santa-shuffler": "git@github.com:DKunin/secret-santa-shuffler.git",
+    "webpack": "^1.12.9",
     "winston": "^2.1.1"
   }
 }

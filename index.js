@@ -1,5 +1,3 @@
 'use strict';
 
-require('babel-core/register');
-
-module.exports = require('./service.es6');
+module.exports = require('./service');
