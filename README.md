@@ -11,7 +11,7 @@
       // Your MailGun Credentials
       var auth = {
         api_key: <YOUR API KEY>,
-        domain: null
+        domain: <YOUR DOMAIN>
       };
 
       santaModule('./list.csv', {auth:auth});
