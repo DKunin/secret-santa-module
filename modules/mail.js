@@ -36,7 +36,7 @@ var mail = function(options){
     var transporter = nodemailer.createTransport(mg(auth));
     R.forEach(function(letter){
       logger.info({to: letter.giver, html: letter.string});
-      sendTheMail({to: 'whitemarten@gmail.com', html: letter.string}, transporter);
+      sendTheMail({to: letter.giver, html: letter.string}, transporter);
     })(santasArray);
   };
 };
