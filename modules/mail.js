@@ -32,13 +32,13 @@ var mail = function(options){
     if(!options) {
       options = {auth: {}};
     }
-    var auth = options.auth
+    var auth = options;
     var transporter = nodemailer.createTransport(mg(auth));
     R.forEach(function(letter){
       logger.info({to: letter.giver, html: letter.string});
       sendTheMail({to: 'whitemarten@gmail.com', html: letter.string}, transporter);
     })(santasArray);
-  }
+  };
 };
 
 module.exports = mail;

@@ -7,8 +7,6 @@ var mail = require('./modules/mail');
 var logger = require('./modules/logger');
 var templater = require('./modules/templater');
 var randomizeArray = require('secret-santa-shuffler');
-
-
 var convertCsvToObj = R.compose(R.fromPairs, R.tail, R.map(R.compose(R.reverse, R.map(R.trim))), R.map(R.split(',')),R.split('\n'));
 var getMails = R.compose(R.map(R.prop(0)),R.toPairs);
 var prepeareForTemplater = function(originalList){
@@ -16,7 +14,7 @@ var prepeareForTemplater = function(originalList){
     item[1] = originalList[item[1]] + ' ' + '(' + item[1] + ')';
     return item;
   }));
-}
+};
 
 module.exports = function(fileName, options){
   
