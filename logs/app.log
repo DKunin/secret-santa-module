@@ -438,3 +438,5 @@
 {"id":"<20151211102843.73044.76666@sandbox991.mailgun.org>","message":"Queued. Thank you.","level":"info","timestamp":"2015-12-11T10:28:43.230Z"}
 {"level":"info","message":"Message sent: ","timestamp":"2015-12-11T10:28:44.143Z"}
 {"id":"<20151211102844.90193.60592@sandbox991.mailgun.org>","message":"Queued. Thank you.","level":"info","timestamp":"2015-12-11T10:28:44.143Z"}
+{"level":"error","timestamp":"2015-12-11T19:20:57.303Z"}
+{"level":"error","timestamp":"2015-12-11T19:21:11.106Z"}

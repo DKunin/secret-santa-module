@@ -7,5 +7,5 @@ var auth = {
   domain: null
 };
 
-santaModule('./list.csv', {auth:auth});
+santaModule('./test-list.csv', {auth:auth, debug:true});
   
