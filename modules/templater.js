@@ -3,7 +3,8 @@
 var R = require('ramda');
 var jade = require('jade');
 var prepeareArray = R.map(function(item){return { giver:item[0], to:item[1] };});
-var fn = jade.compile('div Вам предстоит осчастливить: \n div= to', {});
+
+var fn = jade.compile('div You should prepare a present for: \n div= to', {});
 
 var processJadeWithOriginal = function(ob){return { giver: ob.giver, string: fn(ob)};};
 var processArrayToTemplates = R.compose(R.map(processJadeWithOriginal), prepeareArray);

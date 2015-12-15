@@ -26,7 +26,7 @@
 
 ## Sent message
   
-  Вам предстоит осчастливить:
+  You should prepare a present for:
   Wally West (kidflash@dccomics.com)
 
 ## TODO 
