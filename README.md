@@ -26,7 +26,6 @@
       Barry Allen,flash@dccomics.com
       Wally West ,kidflash@dccomics.com
 
-
 ## Sent message
   
   You should prepare a present for:
