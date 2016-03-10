@@ -1,9 +1,8 @@
 'use strict';
 
-var mg = require('nodemailer-mailgun-transport');
-var nodemailer = require('nodemailer');
 var logger = require('./logger');
-var R = require('ramda');
+var nodemailer = require('nodemailer');
+var mg = require('nodemailer-mailgun-transport');
 
 var mailOptionsDef = {
     from: 'secret@santa.com',
@@ -13,7 +12,7 @@ var mailOptionsDef = {
 };
 
 var sendTheMail = function(opts, transporter) {
-    var saveOpts = R.merge(mailOptionsDef, opts);
+    var saveOpts = Object.assign(mailOptionsDef, opts);
     transporter.sendMail(saveOpts, function(error, info) {
       if (error) {
           logger.error(error);
@@ -29,15 +28,19 @@ var sendTheMail = function(opts, transporter) {
 
 var mail = function(options) {
     return function(santasArray) {
-        if (!options) {
-            options = { auth: {} };
-        }
-        var auth = options;
-        var transporter = nodemailer.createTransport(mg(auth));
-        R.forEach(function(letter) {
-            logger.info({ to: letter.giver, html: letter.string });
-            sendTheMail({ to: letter.giver, html: letter.string }, transporter);
-        })(santasArray);
+        return new Promise(function(resolve) {
+            if (!options) {
+                options = { auth: {} };
+            }
+            var auth = options;
+            var transporter = nodemailer.createTransport(mg(auth));
+            var sendingAddresses = santasArray.map(function(letter) {
+                var objectToProcess = { to: letter.giver, html: letter.string };
+                sendTheMail(objectToProcess, transporter);
+                return objectToProcess;
+            });
+            resolve(sendingAddresses);
+        });
     };
 };
 

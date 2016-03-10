@@ -1,13 +1,13 @@
 'use strict';
 
-var pathExists = require('path-exists');
-var winston = require('winston');
 var fs = require('fs');
+var winston = require('winston');
+var pathExists = require('path-exists');
 
 var LOG_DIR = './logs';
 
-if ( !pathExists.sync( LOG_DIR ) ) {
-    fs.mkdirSync( LOG_DIR );
+if (!pathExists.sync(LOG_DIR)) {
+    fs.mkdirSync(LOG_DIR);
 }
 
 var logger = new (winston.Logger)({
