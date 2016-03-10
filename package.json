@@ -1,6 +1,6 @@
 {
   "name": "secret-santa-module",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Secret santa shuffler and email sender",
   "repository": "git@github.com:DKunin/secret-santa-module.git",
   "main": "index.js",
@@ -14,6 +14,7 @@
     "jade": "^1.11.0",
     "nodemailer": "^1.10.0",
     "nodemailer-mailgun-transport": "^1.0.1",
+    "path-exists": "^2.1.0",
     "ramda": "^0.18.0",
     "secret-santa-shuffler": "git@github.com:DKunin/secret-santa-shuffler.git",
     "webpack": "^1.12.9",

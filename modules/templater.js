@@ -1,8 +1,8 @@
 'use strict';
 
-var R = require('ramda');
-var jade = require('jade');
 var DEFAULT_TEMPLATE = 'div You should prepare a present for: \n div= to';
+var jade = require('jade');
+var R = require('ramda');
 
 var prepeareArray = R.map(function(item) {
     return { giver: item[0], to: item[1] };

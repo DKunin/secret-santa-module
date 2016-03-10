@@ -1,11 +1,12 @@
 'use strict';
 
+var pathExists = require('path-exists');
 var winston = require('winston');
 var fs = require('fs');
 
 var LOG_DIR = './logs';
 
-if ( !fs.existsSync( LOG_DIR ) ) {
+if ( !pathExists.sync( LOG_DIR ) ) {
     fs.mkdirSync( LOG_DIR );
 }
 

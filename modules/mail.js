@@ -1,9 +1,9 @@
 'use strict';
 
-var R = require('ramda');
-var logger = require('./logger');
-var nodemailer = require('nodemailer');
 var mg = require('nodemailer-mailgun-transport');
+var nodemailer = require('nodemailer');
+var logger = require('./logger');
+var R = require('ramda');
 
 var mailOptionsDef = {
     from: 'secret@santa.com',
