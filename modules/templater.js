@@ -2,16 +2,21 @@
 
 var R = require('ramda');
 var jade = require('jade');
-var prepeareArray = R.map(function(item){return { giver:item[0], to:item[1] };});
+var DEFAULT_TEMPLATE = 'div You should prepare a present for: \n div= to';
 
-var fn = jade.compile('div You should prepare a present for: \n div= to', {});
+var prepeareArray = R.map(function(item) {
+    return { giver: item[0], to: item[1] };
+});
 
-var processJadeWithOriginal = function(ob){return { giver: ob.giver, string: fn(ob)};};
-var processArrayToTemplates = R.compose(R.map(processJadeWithOriginal), prepeareArray);
-function templater(array){
-  return new Promise(function(resolve, reject){
-    Promise.all(processArrayToTemplates(array)).then(resolve).catch(reject);
-  });
-}
+module.exports = function templater(options, array) {
+    var jadeCompileFunction = jade.compile(options.template ? options.template : DEFAULT_TEMPLATE, {});
+    var processJadeWithOriginal = function(ob) {
+        return { giver: ob.giver, string: jadeCompileFunction(ob) };
+    };
 
-module.exports = templater;
+    var processArrayToTemplates = R.compose(R.map(processJadeWithOriginal), prepeareArray);
+
+    return new Promise(function(resolve, reject) {
+        Promise.all(processArrayToTemplates(array)).then(resolve).catch(reject);
+    });
+};

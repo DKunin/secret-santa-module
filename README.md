@@ -6,6 +6,9 @@
 
 ## Usage
 
+      var fs = require('fs');
+      var path = require('path');
+      var list = fs.readFileSync(path.resolve('./test-list.csv')).toString();
       var santaModule = require('secret-santa-module');
       
       // Your MailGun Credentials
@@ -14,7 +17,7 @@
         domain: <YOUR DOMAIN>
       };
 
-      santaModule('./list.csv', {auth:auth});
+      santaModule(list, { auth:auth, debug: true, template: 'div Give your best to: \n div= to' });
 
 ## List Example
 
@@ -29,5 +32,12 @@
   You should prepare a present for:
   Wally West (kidflash@dccomics.com)
 
+## Changelog
+
+### 3.0.0
+- Breaking changes: you should provide csv string instead of a filename
+- You can provide custom template option jade string
+
 ## TODO 
-- Custom templates
+- ~~Custom templates~~
+- Templates without jade or Automatic conversation from HTML to jade

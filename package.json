@@ -1,6 +1,6 @@
 {
   "name": "secret-santa-module",
-  "version": "2.2.2",
+  "version": "3.0.0",
   "description": "Secret santa shuffler and email sender",
   "repository": "git@github.com:DKunin/secret-santa-module.git",
   "main": "index.js",
